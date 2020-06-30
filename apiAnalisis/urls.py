@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^$',views.Autenticacion.singIn),
     url(r'^postsign/',views.Autenticacion.postsign),
     path('mostrarInterfazBuscar/', views.Clasificacion.mostrarInterfazBuscar),
-    path('buscarCliente/', views.Clasificacion.buscarCliente, name='busqueda'),
+    path('buscarCliente/', views.Clasificacion.buscarCliente),
     url(r'^mostrarInterfazPredecirConEstilo/',views.Clasificacion.mostrarInterfazPredecirConEstilo),
     
 ]
