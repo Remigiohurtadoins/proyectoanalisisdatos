@@ -39,12 +39,12 @@ class modeloAnalisis():
     def predecir(self,Dni=0):
         cliente=self.dfOriginal.loc[self.dfOriginal['DNI'] == Dni]
         #print('cliente: ',cliente)
-        edad=cliente['EDAD'].values
-        edad=edad[0]
         tipoCliente=2
         if not(cliente.empty):
             print('Existe el cliente')
             indiceCliente=cliente.index.values[0]
+            edad=cliente['EDAD'].values
+            edad=edad[0]
             print('Indice: ',indiceCliente)
             cliente=self.DataframeTransformado1.loc[ indiceCliente , : ]
             historialCredito=round(cliente[0],2)
