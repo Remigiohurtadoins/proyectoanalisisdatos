@@ -8,9 +8,7 @@ from django.shortcuts import render
 from apiAnalisis.Logica.modeloAnalisis import modeloAnalisis#para utilizar modelo
 from apiAnalisis.Logica.Autenticacion import Autenticacion as auten
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.clickjacking import xframe_options_exempt
 from django.http import JsonResponse
-
 import json
 import pandas as pd
 import csv
@@ -127,7 +125,6 @@ class Clasificacion():
         return render(request, "resultado.html",{"e":resul})
 
     #@csrf_exempt
-    @xframe_options_exempt
     def predecirTipoCliente2(request):
         #try:
         #    Dni = int(request.POST.get('Dni'))
@@ -139,21 +136,17 @@ class Clasificacion():
         #resul=modeloAnalisis.suma(num1=2,num2=5)
         #resul=modeloAnalisis.predecirTipoCliente(modeloAnalisis,Dni)
         #print(resul)
-        data = [{'Nombre': 'Remi', 'email': 'remi@example.org'},
-            {'Nombre': 'JP', 'email': 'jp@example.org'}]
-        #response = JsonResponse(
-        #    data
-        #)
-
-        return JsonResponse(data, safe=False)
-
-        #response["Access-Control-Allow-Origin"] = "*"
-        #response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
-        #response["Access-Control-Max-Age"] = "1000"
-        #response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
-        #return response
+        #resul="hola"
+        #print(resul)
         #return render(request, "resultado.html",{"e":resul})
         #return HttpResponse(resul)
+        data = {
+        'name': 'Vitor',
+        'location': 'Finland',
+        'is_active': True,
+        'count': 28
+        }
+        return JsonResponse(data)
 
     def buscarCliente(request):
         try:
