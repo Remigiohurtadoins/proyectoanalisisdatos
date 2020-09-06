@@ -9,6 +9,7 @@ from apiAnalisis.Logica.modeloAnalisis import modeloAnalisis#para utilizar model
 from apiAnalisis.Logica.Autenticacion import Autenticacion as auten
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.http import JsonResponse
 
 import json
 import pandas as pd
@@ -138,16 +139,19 @@ class Clasificacion():
         #resul=modeloAnalisis.suma(num1=2,num2=5)
         #resul=modeloAnalisis.predecirTipoCliente(modeloAnalisis,Dni)
         #print(resul)
-        resul="hola"
-        print(resul)
-        response = JsonResponse(
-            'resul': 'hola'
-        )
-        response["Access-Control-Allow-Origin"] = "*"
-        response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
-        response["Access-Control-Max-Age"] = "1000"
-        response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
-        return response
+        data = [{'Nombre': 'Remi', 'email': 'remi@example.org'},
+            {'Nombre': 'JP', 'email': 'jp@example.org'}]
+        #response = JsonResponse(
+        #    data
+        #)
+
+        return JsonResponse(data, safe=False)
+
+        #response["Access-Control-Allow-Origin"] = "*"
+        #response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+        #response["Access-Control-Max-Age"] = "1000"
+        #response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+        #return response
         #return render(request, "resultado.html",{"e":resul})
         #return HttpResponse(resul)
 
