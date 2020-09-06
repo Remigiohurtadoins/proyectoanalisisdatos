@@ -8,6 +8,7 @@ from django.shortcuts import render
 from apiAnalisis.Logica.modeloAnalisis import modeloAnalisis#para utilizar modelo
 from apiAnalisis.Logica.Autenticacion import Autenticacion as auten
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 import json
 import pandas as pd
@@ -124,7 +125,8 @@ class Clasificacion():
         print(resul)
         return render(request, "resultado.html",{"e":resul})
 
-    @csrf_exempt
+    #@csrf_exempt
+    @xframe_options_exempt
     def predecirTipoCliente2(request):
         #try:
         #    Dni = int(request.POST.get('Dni'))
