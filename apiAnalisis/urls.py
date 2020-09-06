@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^mostrarInterfazPredecir/',views.Clasificacion.mostrarInterfazPredecir),
     url(r'^predecirTipoCliente/',views.Clasificacion.predecirTipoCliente),
     url(r'^predecirTipoCliente2/',views.Clasificacion.predecirTipoCliente2),
+
+    path('sumar/', views.Clasificacion.sumar),
+    path('sumar2/', views.Clasificacion.sumar2),
     
     #Interfaz con estilo
     url(r'^mostrarInterfazPredecirConEstilo/',views.Clasificacion.mostrarInterfazPredecirConEstilo),

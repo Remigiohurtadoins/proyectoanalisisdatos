@@ -124,7 +124,6 @@ class Clasificacion():
         print(resul)
         return render(request, "resultado.html",{"e":resul})
 
-    #@csrf_exempt
     def predecirTipoCliente2(request):
         #try:
         #    Dni = int(request.POST.get('Dni'))
@@ -163,10 +162,21 @@ class Clasificacion():
         return render(request, 'datosCliente.html', {
                 'edad': int(cliente[0]['edad']),
                 'tipoCliente': int(cliente[0]['tipoCliente'])})
-
-    #def buscarClienteConPOST(request):
-    #    received_json_data=json.loads(request.body)
-
+    @csrf_exempt
+    def sumar(request):
+        received_json_data=json.loads(request.body)
+        #print(type(received_json_data))
+        #print(received_json_data.values)
+        num1=received_json_data['num1']
+        #print(num1)
+        num2=received_json_data['num2']
+        #print(num2)
+        suma=num1+num2
+        print(suma)
+        data = {
+        'suma': suma
+        }
+        return JsonResponse(data)
         #desde java
     #    url = "http://localhost:8000"
     #    data = {'data':[{'key1':'val1'}, {'key2':'val2'}]}
@@ -179,5 +189,9 @@ class Clasificacion():
     #        if request.method == 'POST':
     #            print 'Raw Data: "%s"' % request.body   
     #    return HttpResponse("OK")
-
-   
+    @csrf_exempt
+    def sumar2(request):
+        body = json.loads(request.body.decode('utf-8'))
+        foo = body.get("num1")
+        #li = foo.split(";")
+        print(foo) 
