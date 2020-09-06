@@ -192,6 +192,11 @@ class Clasificacion():
     @csrf_exempt
     def sumar2(request):
         body = json.loads(request.body.decode('utf-8'))
-        foo = body.get("num1")
-        #li = foo.split(";")
-        print(foo) 
+        num1 = body.get("num1")
+        num2 = body.get("num2")
+        suma=num1+num2
+        print(suma)
+        data = {
+        'suma': suma
+        }
+        return JsonResponse(data)
