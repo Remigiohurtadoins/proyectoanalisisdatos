@@ -140,8 +140,16 @@ class Clasificacion():
         #print(resul)
         resul="hola"
         print(resul)
+        response = JsonResponse(
+            'resul': 'hola'
+        )
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+        response["Access-Control-Max-Age"] = "1000"
+        response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+        return response
         #return render(request, "resultado.html",{"e":resul})
-        return HttpResponse(resul)
+        #return HttpResponse(resul)
 
     def buscarCliente(request):
         try:
