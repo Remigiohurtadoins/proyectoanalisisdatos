@@ -1,15 +1,17 @@
 #CONTROLADOR
-
 from rest_framework import generics #para microservicio
 from apiAnalisis import models
 from apiAnalisis import serializers
 from rest_framework import filters
+from django.http import HttpResponse
 from django.shortcuts import render
 from apiAnalisis.Logica.modeloAnalisis import modeloAnalisis#para utilizar modelo
 from apiAnalisis.Logica.Autenticacion import Autenticacion as auten
+from django.views.decorators.csrf import csrf_exempt
 
-from django.shortcuts import render
-import requests
+import json
+import pandas as pd
+import csv
 
 # Create your views here.
 class ListLibro(generics.ListCreateAPIView):
@@ -122,6 +124,23 @@ class Clasificacion():
         print(resul)
         return render(request, "resultado.html",{"e":resul})
 
+    @csrf_exempt
+    def predecirTipoCliente2(request):
+        #try:
+        #    Dni = int(request.POST.get('Dni'))
+        #    print("LLego",Dni)
+        #except:
+        #    mensaje = "El DNI no tiene el formato adecuado"
+            #return render(request,"signIn.html",{"msg":mensaje})
+        #print(type(Dni))
+        #resul=modeloAnalisis.suma(num1=2,num2=5)
+        #resul=modeloAnalisis.predecirTipoCliente(modeloAnalisis,Dni)
+        #print(resul)
+        resul="hola"
+        print(resul)
+        #return render(request, "resultado.html",{"e":resul})
+        return HttpResponse(resul)
+
     def buscarCliente(request):
         try:
             Dni = int(request.POST.get('Dni'))
@@ -136,7 +155,22 @@ class Clasificacion():
             return render(request,"interfazBuscar.html",{"msg":mensaje})
         return render(request, 'datosCliente.html', {
                 'edad': int(cliente[0]['edad']),
-                'tipoCliente': int(cliente[0]['tipoCliente'])
-    })
+                'tipoCliente': int(cliente[0]['tipoCliente'])})
+
+    #def buscarClienteConPOST(request):
+    #    received_json_data=json.loads(request.body)
+
+        #desde java
+    #    url = "http://localhost:8000"
+    #    data = {'data':[{'key1':'val1'}, {'key2':'val2'}]}
+    #    headers = {'content-type': 'application/json'}
+    #    r=requests.post(url, data=json.dumps(data), headers=headers)
+    #    r.text
+
+    #def save_events_json(request):
+    #    if request.is_ajax():
+    #        if request.method == 'POST':
+    #            print 'Raw Data: "%s"' % request.body   
+    #    return HttpResponse("OK")
 
    

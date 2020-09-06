@@ -26,7 +26,7 @@ SECRET_KEY = 'cofatjc=*e6=bg&2boyecis_v(c+4!frkdqz7^e(o(fn86lhq-'
 DEBUG = True
 
 #ESTO SE MODIFICÓ. SE DEBE PONER EL DOMINIO ESPECÍFICO
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','proyectomlweb.uc.r.appspot.com','proyectomlweb.appspot.com']
+ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1','proyectomlweb.uc.r.appspot.com','proyectomlweb.appspot.com']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'apiAnalisis.apps.ApiAnalisisConfig',#ESTO SE AÑADIÓ
     'rest_framework',#ESTO SE AÑADIÓ
     'drf_yasg',#ESTO SE AÑADIÓ
@@ -62,7 +63,24 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware',
+]
+
+# CORS Config
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'Proyecto.urls'
 

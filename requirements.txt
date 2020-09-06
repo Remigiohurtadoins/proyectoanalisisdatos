@@ -1,5 +1,3 @@
-tensorflow
-keras
 Django
 djangorestframework
 drf-yasg
@@ -11,3 +9,5 @@ pillow
 polls
 markdown
 django-filter
+matplotlib
+seaborn

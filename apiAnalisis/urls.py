@@ -22,6 +22,7 @@ urlpatterns = [
     #Predicción
     url(r'^mostrarInterfazPredecir/',views.Clasificacion.mostrarInterfazPredecir),
     url(r'^predecirTipoCliente/',views.Clasificacion.predecirTipoCliente),
+    url(r'^predecirTipoCliente2/',views.Clasificacion.predecirTipoCliente2),
     
     #Interfaz con estilo
     url(r'^mostrarInterfazPredecirConEstilo/',views.Clasificacion.mostrarInterfazPredecirConEstilo),
